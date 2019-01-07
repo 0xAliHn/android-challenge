@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.alihn.gitcommit"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+        debug {
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+ext {
+    supportLibVersion = '28.0.0'
+    okhttpVersion = '3.9.0'
+    daggerVersion = '2.5'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Support
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation "com.android.support:support-v4:${supportLibVersion}"
+    implementation "com.android.support:support-annotations:${supportLibVersion}"
+    implementation "com.android.support:palette-v7:${supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // Rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    // Network
+    implementation "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+
+    // Other
+    implementation 'net.jcip:jcip-annotations:1.0'
+    implementation 'com.squareup.moshi:moshi:1.5.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Dependency Injection
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
+
+}

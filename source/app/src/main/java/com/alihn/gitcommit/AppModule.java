@@ -1,0 +1,37 @@
+package com.alihn.gitcommit;
+
+import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+
+
+@Module
+public class AppModule
+{
+    private Context context;
+
+    AppModule(Application application)
+    {
+        context = application;
+    }
+
+    @Provides
+    @Singleton
+    public Context provideContext()
+    {
+        return context;
+    }
+
+    @Provides
+    @Singleton
+    public Resources provideResources(@NonNull Context context)
+    {
+        return context.getResources();
+    }
+}

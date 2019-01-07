@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GitCommit</string>
+    <string name="action_filter">Filter</string>
+    <string name="git_commit">GitCommit</string>
+</resources>
